@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.6</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>io.github.wesleyosantos91</groupId>
+    <artifactId>poc-multi-module-arch-hexagonal-springboot</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>poc-multi-module-arch-hexagonal-springboot</name>
+    <description>poc-multi-module-arch-hexagonal-springboot</description>
+
+    <developers>
+        <developer>
+            <email>wesleyosantos91@gmail.com</email>
+            <id>wesleyosantos91</id>
+            <name>Wesley Oliveira Santos</name>
+            <url>https://wesleyosantos91.github.io/</url>
+        </developer>
+    </developers>
+
+    <properties>
+        <java.version>17</java.version>
+        <sonar.coverage.jacoco.xmlReportPaths>
+            ${basedir}/infrastructure/coverage/target/site/jacoco-aggregate/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
+    </properties>
+
+    <modules>
+        <module>ms-launcher</module>
+        <module>domain</module>
+        <module>application</module>
+        <module>infrastructure/datastore-mysql</module>
+        <module>infrastructure/kafka-consumer</module>
+        <module>infrastructure/kafka-producer</module>
+        <module>infrastructure/coverage</module>
+    </modules>
+</project>
