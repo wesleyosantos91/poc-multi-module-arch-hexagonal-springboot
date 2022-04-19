@@ -27,7 +27,9 @@
     </developers>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
+        <sonar.organization>wesleyosantos91-github</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.coverage.jacoco.xmlReportPaths>
             ${basedir}/infrastructure/coverage/target/site/jacoco-aggregate/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
