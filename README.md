@@ -42,6 +42,101 @@
 
 > Ports & Adapters Architecture ou Arquitetura Hexagonal: A arquitetura hexagonal, ou arquitetura de portas e adaptadores, é um padrão arquitetural usado no design de software. O objetivo é criar componentes de aplicativos fracamente acoplados que possam ser facilmente conectados ao ambiente de software por meio de portas e adaptadores.
 
-> Springboot: O Spring Boot é um projeto da Spring que veio para facilitar o processo de configuração e publicação de nossas aplicações. A intenção é ter o seu projeto rodando o mais rápido possível e sem complicação.
+##  Pré -requisitos
 
-> Java: Java é uma linguagem de programação orientada a objetos desenvolvida na década de 90 por uma equipe de programadores chefiada por James Gosling, na empresa Sun Microsystems. Em 2008 o Java foi adquirido pela empresa Oracle Corporation.
+- [ `Java 11+` ](https://www.oracle.com/java/technologies/downloads/#java11)
+- [ `Docker` ](https://www.docker.com/)
+- [ `Docker-Compose` ](https://docs.docker.com/compose/install/)
+
+## Stack
+- **Sonar** para analise de qualidade e cobertura de testes
+- **Elasticsearch** Busca e análise de dados
+- **Logstash** Pipeline de dados
+- **Kibana** Visualização de dados
+- **Filebeat**  Log shipper
+
+## Portas
+| Aplicação          | Porta      |
+|--------------------|------------|
+| Ms-Launcher        | 8080       |
+| Sonarqube          | 9000       |
+| Postgres Sonarqube | 5432       |
+| Elasticsearch      | 9200, 9300 |
+| Logstash           | 5044       |
+| Kibana             | 5601       |
+
+
+## Links
+
+- Sonar Cloud
+  - http://localhost:9000
+- Kibana (Criar index pattern - filebeat-*)
+  - http://localhost:5601
+
+## Setup
+
+- ### Variáveis de ambiente
+
+| Variável de Ambiente  | Descrição                                                                       |
+|-----------------------|---------------------------------------------------------------------------------|
+| `MYSQL_HOST`          | Especifique o host do banco de dados `MySQL` a ser usado (padrão `localhost` )  |
+| `MYSQL_PORT`          | Especifique a porta do banco de dados `MySQL` a ser usada (padrão `3306` )      |
+
+### Build da aplicação
+- Entre no diretorio dos scripts `cd scripts`
+- Execute o seguinte comando: 
+  ```
+  /bin/bash build.sh
+  ```
+
+### Executando a aplicação com maven
+- Execute o seguinte comando:
+  ```
+  ./mvnw clean spring-boot:run --projects ms-launcher
+  ```
+  > **Nota:** Se você quiser mudar para "non-json-logs" (talvez durante o desenvolvimento seja útil), execute
+  > ```
+  > ./mvnw clean spring-boot:run --projects movies-api -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=non-json-logs"
+  > ```
+
+### Executar docker-compose para subur aplicação com container docker
+- Execute o seguinte comando para subir os containers: 
+  ```
+  docker-compose up
+  ```
+- Execute o seguinte comando para verificar os status do containers docker:
+  ```
+  docker-compose ps
+  ```
+  
+### Sonarqube
+
+- Realize o Login com user: admin password: admin para uma nova senha
+- Clique na opção Manually
+- Crie os Project display name/project key: `poc-multi-module-arch-hexagonal-springboot`
+- Clique na opção Locally
+- Preencha com `wos` e clique em Generate
+- Subtitua o project key e token do arquivo `scripts/sonar.sh` pelos criado agora
+- Entre no diretorio dos scripts `cd scripts`
+- Execute o seguinte comando: 
+  ```
+  /bin/bash sonar.sh
+  ```
+
+### Kibana
+
+- Na página principal, clique no ícone do menu *"hambúrguer"* e, em seguida, clique em `Discover`
+- Clique no botão `Create index pattern`
+- No campo `Name`, defina `filebeat-*`
+- No campo `Timestamp field` selecione `@timestamp`
+- Clique no botão `Create index pattern`
+- Clique no ícone do menu "hambúrguer"Discover novamente e depois clique para iniciar as pesquisas
+
+## TODO List
+
+- [x] Qualidade de código
+  - [x] Sonarqube
+- [ ] Observabilidade
+  - [x] Logs ELK (Elasticsearch, Logstash, Kibana) e Filebeat
+  - [ ] Prometheus e Grafana
+  - [ ] 
