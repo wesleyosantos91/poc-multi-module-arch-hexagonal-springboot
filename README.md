@@ -96,7 +96,7 @@
   ```
   > **Nota:** Se você quiser mudar para "non-json-logs" (talvez durante o desenvolvimento seja útil), execute
   > ```
-  > ./mvnw clean spring-boot:run --projects movies-api -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=non-json-logs"
+  > ./mvnw clean spring-boot:run --projects ms-launcher -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=non-json-logs"
   > ```
 
 ### Executar docker-compose para subur aplicação com container docker
@@ -131,6 +131,14 @@
 - No campo `Timestamp field` selecione `@timestamp`
 - Clique no botão `Create index pattern`
 - Clique no ícone do menu "hambúrguer"Discover novamente e depois clique para iniciar as pesquisas
+
+## Deletar todos containers Docker
+
+- Entre no diretorio dos scripts `cd scripts`
+- Execute o seguinte comando:
+  ```
+  /bin/bash remove-docker-images.sh
+  ```
 
 ## TODO List
 
