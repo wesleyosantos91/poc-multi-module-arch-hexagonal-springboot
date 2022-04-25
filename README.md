@@ -147,4 +147,4 @@
 - [ ] Observabilidade
   - [x] Logs ELK (Elasticsearch, Logstash, Kibana) e Filebeat
   - [ ] Prometheus e Grafana
-  - [ ] 
+  - [ ] Jaeger distributed tracing
