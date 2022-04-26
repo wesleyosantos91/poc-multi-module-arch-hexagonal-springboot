@@ -26,6 +26,8 @@ services:
       - sonarqube_logs:/opt/sonarqube/logs
     ports:
       - "9000:9000"
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "9000" ]
 
   db:
     image: postgres:12
@@ -113,6 +115,22 @@ services:
     healthcheck:
       test: [ "CMD", "nc", "-z", "localhost", "9090" ]
 
+  grafana:
+    image: grafana/grafana:8.4.6
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./config/grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+      - elasticsearch
+      - jaeger
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "3000" ]
 volumes:
   sonarqube_data:
   sonarqube_extensions:

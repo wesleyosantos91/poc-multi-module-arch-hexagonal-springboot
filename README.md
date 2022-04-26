@@ -135,7 +135,7 @@
   
 ### Sonarqube
 
-- Realize o Login com user: admin password: admin para uma nova senha
+- Realize o Login com user: admin password: admin, gerar para uma nova senha
 - Clique na opção Manually
 - Crie os Project display name/project key: `poc-multi-module-arch-hexagonal-springboot`
 - Clique na opção Locally
@@ -157,9 +157,14 @@
 - Clique no ícone do menu "hambúrguer"Discover novamente e depois clique para iniciar as pesquisas
 
 ### Prometheus
-- Na Páginal Principal, é possivel consultar metricas disponível no recuso `http://localhost:8080/actuator/prometheus`
+- Na Página Principal, é possivel consultar metricas disponível no recuso `http://localhost:8080/actuator/prometheus`
 - Exemplo: pesquise por `http_server_requests_seconds_sum` vai retorna as metricas/grafico (clicando na aba graph)
 - No Menu superior selecione a opção Status -> Targets para vizualizar o status do serviço configurado
+
+### Grafana
+- Realize o Login com user: admin password: admin, gerar para uma nova
+- Na Página Princial, clique em `dashboard -> browse` depois clique em `JVM (Micrometer)` ele vai abrir um dashboard criando jundo com container
+- `TODO` Criar dashboard de monitoramento das apis
 
 ## Deletar todos containers Docker
 
