@@ -178,7 +178,7 @@
 
 - [x] Qualidade de código
   - [x] Sonarqube
-- [ ] Observabilidade
+- [x] Observabilidade
   - [x] Logs ELK (Elasticsearch, Logstash, Kibana) e Filebeat
   - [x] Prometheus e Grafana
   - [x] Jaeger distributed tracing
