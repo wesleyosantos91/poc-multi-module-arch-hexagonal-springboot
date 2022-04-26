@@ -180,5 +180,5 @@
   - [x] Sonarqube
 - [ ] Observabilidade
   - [x] Logs ELK (Elasticsearch, Logstash, Kibana) e Filebeat
-  - [ ] Prometheus e Grafana
+  - [x] Prometheus e Grafana
   - [x] Jaeger distributed tracing
