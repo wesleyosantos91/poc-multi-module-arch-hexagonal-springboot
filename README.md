@@ -10,7 +10,9 @@
 ![](https://img.shields.io/badge/Language-java-brightgreen)
 ![](https://img.shields.io/badge/Framework-springboot-brightgreen)
 ![](https://img.shields.io/badge/Arquitetura-Hexagonal-brightgreen)
-![Java CI with Maven](https://github.com/wesleyosantos91/poc-multi-module-arch-hexagonal-springboot/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)
+
+![Java CI with Maven](https://github.com/wesleyosantos91/poc-multi-module-arch-hexagonal-springboot/workflows/Java%20CI%20with%20Maven/badge.svg?branch=main)
+![Sonar Build](https://github.com/wesleyosantos91/poc-multi-module-arch-hexagonal-springboot/workflows/Sonar%20Build/badge.svg?branch=main)
 ![GitHub](https://img.shields.io/github/license/wesleyosantos91/poc-multi-module-arch-hexagonal-springboot)
 </div> 
 
@@ -58,6 +60,8 @@
 - **Logstash** Pipeline de dados
 - **Kibana** Visualização de dados
 - **Filebeat** Log shipper
+- **Prometheus** Monitoramento e alertas
+- **Grafana** Análise e Monitoramento
 - **Jaeger** Tracing Distribuído
 
 ## Portas
@@ -69,6 +73,8 @@
 | Elasticsearch      | 9200   |
 | Logstash           | 5044   |
 | Kibana             | 5601   |
+| Prometheus         | 9090   |
+| Grafana            | 3000   |
 | Jaeger             | 16686  |
 
 
@@ -78,6 +84,10 @@
   - http://localhost:9000
 - Kibana 
   - http://localhost:5601
+- Prometheus
+  - http://localhost:9090
+- Grafana
+  - http://localhost:3000
 - Jaeger
   - http://localhost:16686
 - OpenAPI 
@@ -89,16 +99,18 @@
 
 - ### Variáveis de ambiente
 
-| Variável de Ambiente  | Descrição                                                                       |
-|-----------------------|---------------------------------------------------------------------------------|
-| `MYSQL_HOST`          | Especifique o host do banco de dados `MySQL` a ser usado (padrão `localhost` )  |
-| `MYSQL_PORT`          | Especifique a porta do banco de dados `MySQL` a ser usada (padrão `3306` )      |
+| Variável de Ambiente  | Descrição                                                                      |
+|-----------------------|--------------------------------------------------------------------------------|
+| `MYSQL_HOST`          | Especifique o host do banco de dados `MySQL` a ser usado (padrão `localhost` ) |
+| `MYSQL_PORT`          | Especifique a porta do banco de dados `MySQL` a ser usada (padrão `3306` )     |
+| `JAEGER_HOST`         | Especifique o host do `Jaeger` a ser usado (padrão `localhost` )               |
+| `JAEGER_PORT`         | Especifique a porta do `Jaeger` a ser usada (padrão `6831` )                   |
 
-### Build da aplicação
+### Start da aplicação via script
 - Entre no diretorio dos scripts `cd scripts`
 - Execute o seguinte comando: 
   ```
-  /bin/bash build.sh
+  /bin/bash start-app.sh
   ```
 
 ### Executando a aplicação com maven
@@ -111,7 +123,7 @@
   > ./mvnw clean spring-boot:run --projects ms-launcher -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=non-json-logs"
   > ```
 
-### Executar docker-compose para subur aplicação com container docker
+### Executar docker-compose para subir aplicação com container docker
 - Execute o seguinte comando para subir os containers: 
   ```
   docker-compose up
@@ -143,6 +155,11 @@
 - No campo `Timestamp field` selecione `@timestamp`
 - Clique no botão `Create index pattern`
 - Clique no ícone do menu "hambúrguer"Discover novamente e depois clique para iniciar as pesquisas
+
+### Prometheus
+- Na Páginal Principal, é possivel consultar metricas disponível no recuso `http://localhost:8080/actuator/prometheus`
+- Exemplo: pesquise por `http_server_requests_seconds_sum` vai retorna as metricas/grafico (clicando na aba graph)
+- No Menu superior selecione a opção Status -> Targets para vizualizar o status do serviço configurado
 
 ## Deletar todos containers Docker
 

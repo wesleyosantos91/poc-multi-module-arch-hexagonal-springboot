@@ -5,6 +5,9 @@ services:
     restart: always
     build:
       context: ./ms-launcher/
+    environment:
+      - JAEGER_HOST=${JAEGER_HOST}
+      - JAEGER_PORT=${JAEGER_PORT}
     ports:
       - "8080:8080"
 
@@ -98,6 +101,18 @@ services:
       - "14250:14250"
     depends_on:
       - ms-launcher
+
+  prometheus:
+    image: prom/prometheus:v2.35.0
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "9090" ]
+
 volumes:
   sonarqube_data:
   sonarqube_extensions:
