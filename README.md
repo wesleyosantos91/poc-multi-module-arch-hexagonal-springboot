@@ -10,12 +10,16 @@
 ![](https://img.shields.io/badge/Language-java-brightgreen)
 ![](https://img.shields.io/badge/Framework-springboot-brightgreen)
 ![](https://img.shields.io/badge/Arquitetura-Hexagonal-brightgreen)
+![Java CI with Maven](https://github.com/wesleyosantos91/poc-multi-module-arch-hexagonal-springboot/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)
+![GitHub](https://img.shields.io/github/license/wesleyosantos91/poc-multi-module-arch-hexagonal-springboot)
 </div> 
 
 <div align="center">
 
 ## Arquitetura
+![Arquitetura](images/diagrama_1.png "Arquitetura")
 
+![Arquitetura](images/diagrama_2.jpeg "Arquitetura")
 </div>
 
 <div align="center">
@@ -49,30 +53,38 @@
 - [ `Docker-Compose` ](https://docs.docker.com/compose/install/)
 
 ## Stack
-- **Sonar** para analise de qualidade e cobertura de testes
+- **Sonar** Analise de qualidade e cobertura de testes
 - **Elasticsearch** Busca e análise de dados
 - **Logstash** Pipeline de dados
 - **Kibana** Visualização de dados
-- **Filebeat**  Log shipper
+- **Filebeat** Log shipper
+- **Jaeger** Tracing Distribuído
 
 ## Portas
-| Aplicação          | Porta      |
-|--------------------|------------|
-| Ms-Launcher        | 8080       |
-| Sonarqube          | 9000       |
-| Postgres Sonarqube | 5432       |
-| Elasticsearch      | 9200, 9300 |
-| Logstash           | 5044       |
-| Kibana             | 5601       |
+| Aplicação          | Porta  |
+|--------------------|--------|
+| Ms-Launcher        | 8080   |
+| Sonarqube          | 9000   |
+| Postgres Sonarqube | 5432   |
+| Elasticsearch      | 9200   |
+| Logstash           | 5044   |
+| Kibana             | 5601   |
+| Jaeger             | 16686  |
 
 
 ## Links
 
 - Sonar Cloud
   - http://localhost:9000
-- Kibana (Criar index pattern - filebeat-*)
+- Kibana 
   - http://localhost:5601
-
+- Jaeger
+  - http://localhost:16686
+- OpenAPI 
+  - Swagger
+    - http://localhost:8080/swagger-ui/index.html
+  - API Docs
+    - http://localhost:8080/v3/api-docs
 ## Setup
 
 - ### Variáveis de ambiente
@@ -147,4 +159,4 @@
 - [ ] Observabilidade
   - [x] Logs ELK (Elasticsearch, Logstash, Kibana) e Filebeat
   - [ ] Prometheus e Grafana
-  - [ ] Jaeger distributed tracing
+  - [x] Jaeger distributed tracing

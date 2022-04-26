@@ -1,4 +1,4 @@
-package io.github.wesleyosantos91;
+package io.github.wesleyosantos91.api.v1.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
