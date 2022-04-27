@@ -13,9 +13,20 @@ permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
 
 jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn -B package verify --file pom.xml
   Sonarcloud:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Analyze with SonarCloud
         uses: SonarSource/sonarcloud-github-action@v1.6
@@ -26,7 +37,6 @@ jobs:
           args:
             -Dsonar.projectKey=wesleyosantos91_poc-multi-module-arch-hexagonal-springboot
             -Dsonar.organization=wesleyosantos91-github
-            -Dsonar.coverage.jacoco.xmlReportPaths=/home/runner/work/poc-multi-module-arch-hexagonal-springboot/poc-multi-module-arch-hexagonal-springboot/infrastructure/coverage/target/site/jacoco-aggregate/jacoco.xml
       - name: SonarQube Quality Gate Check
         uses: SonarSource/sonarqube-quality-gate-action@v1.0.0
         env:
