@@ -13,12 +13,12 @@ permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
 
 jobs:
-  Analysis:
+  Sonarcloud:
     runs-on: ubuntu-latest
     
     steps:
       - name: Analyze with SonarCloud
-        uses: SonarSource/sonarcloud-github-action@v1.6
+        uses: SonarSource/sonarcloud-github-action@1.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
