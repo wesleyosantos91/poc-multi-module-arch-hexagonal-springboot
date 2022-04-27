@@ -27,6 +27,7 @@ jobs:
             -Dsonar.projectKey=wesleyosantos91_poc-multi-module-arch-hexagonal-springboot
             -Dsonar.organization=wesleyosantos91-github
       - name: SonarQube Quality Gate Check
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
         uses: SonarSource/sonarqube-quality-gate-action@v1.0.0
