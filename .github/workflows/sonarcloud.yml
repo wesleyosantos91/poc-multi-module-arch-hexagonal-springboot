@@ -26,6 +26,7 @@ jobs:
           args:
             -Dsonar.projectKey=wesleyosantos91_poc-multi-module-arch-hexagonal-springboot
             -Dsonar.organization=wesleyosantos91-github
+            -Dsonar.coverage.jacoco.xmlReportPaths=/home/runner/work/poc-multi-module-arch-hexagonal-springboot/poc-multi-module-arch-hexagonal-springboot/infrastructure/coverage/target/site/jacoco-aggregate/jacoco.xml
       - name: SonarQube Quality Gate Check
         uses: SonarSource/sonarqube-quality-gate-action@v1.0.0
         env:
