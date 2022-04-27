@@ -26,7 +26,7 @@ jobs:
           args:
             -Dsonar.projectKey=wesleyosantos91_poc-multi-module-arch-hexagonal-springboot
             -Dsonar.organization=wesleyosantos91-github
-            -Dsonar.projectBaseDir=./infrastructure/coverage
+            -Dsonar.projectBaseDir=.
       - name: SonarQube Quality Gate Check
         uses: SonarSource/sonarqube-quality-gate-action@v1.0.0
         env:
