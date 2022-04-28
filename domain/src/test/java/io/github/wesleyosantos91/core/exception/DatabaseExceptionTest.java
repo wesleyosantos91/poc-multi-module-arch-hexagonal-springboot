@@ -10,7 +10,7 @@ class DatabaseExceptionTest {
 
     @Test
     @DisplayName("[domain] - should throw execption with message 'Exception running the method'")
-    public void testSomethingShouldThrowException() {
+    void testSomethingShouldThrowException() {
 
         String expectedMessage = "Exception running the method";
 

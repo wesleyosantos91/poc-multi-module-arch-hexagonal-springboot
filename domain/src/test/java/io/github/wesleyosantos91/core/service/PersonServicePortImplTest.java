@@ -40,7 +40,7 @@ class PersonServicePortImplTest {
         List<PersonDomain> personDomains = Fixture.from(PersonDomain.class).gimme(1,"valid");
         when(personDatabasePort.find()).thenReturn(personDomains);
         List<PersonDomain> result = personServicePort.find();
-        assertThat(result.size()).isPositive();
+        assertThat(result).isNotEmpty();
     }
 
     @Test
