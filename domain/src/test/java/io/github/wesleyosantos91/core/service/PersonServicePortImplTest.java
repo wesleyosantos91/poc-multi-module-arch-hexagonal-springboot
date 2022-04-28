@@ -35,7 +35,7 @@ class PersonServicePortImplTest {
     }
 
     @Test
-    @DisplayName("[domain] - should return a list with positive quantity")
+    @DisplayName("[domain] - should return a list is not empty")
     void find() {
         List<PersonDomain> personDomains = Fixture.from(PersonDomain.class).gimme(1,"valid");
         when(personDatabasePort.find()).thenReturn(personDomains);

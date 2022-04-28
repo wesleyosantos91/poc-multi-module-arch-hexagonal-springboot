@@ -22,8 +22,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @Sql(value = "/load-database.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(value = "/clean-database.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
-@DataJpaTest
 @ActiveProfiles("test")
+@DataJpaTest
 @ExtendWith(SpringExtension.class)
 class PersonMySQLAdapterTest {
 
@@ -39,7 +39,7 @@ class PersonMySQLAdapterTest {
     }
 
     @Test
-    @DisplayName("[datastore-mysql] - should return a list with positive quantity")
+    @DisplayName("[datastore-mysql] - should return a list is not empty")
     void find() {
         List<PersonDomain> result = adapter.find();
         assertThat(result).isNotEmpty();
