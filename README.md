@@ -60,25 +60,23 @@
 - **Logstash** Pipeline de dados
 - **Kibana** Visualização de dados
 - **Filebeat** Log shipper
-- **Loki** Agregação de Registros
-- **Promtail** Agente de leitura de logs
 - **Prometheus** Monitoramento e alertas
 - **Grafana** Análise e Monitoramento
 - **Jaeger** Tracing Distribuído
 
 ## Portas
-| Aplicação          | Porta  |
-|--------------------|--------|
-| Ms-Launcher        | 8080   |
-| Sonarqube          | 9000   |
-| Postgres Sonarqube | 5432   |
-| Elasticsearch      | 9200   |
-| Logstash           | 5044   |
-| Kibana             | 5601   |
-| Loki               | 3100   |
-| Prometheus         | 9090   |
-| Grafana            | 3000   |
-| Jaeger             | 16686  |
+| Aplicação          | Porta |
+|--------------------|-------|
+| Ms-Launcher        | 8080  |
+| Sonarqube          | 9000  |
+| Postgres Sonarqube | 5432  |
+| MySQL              | 3600  |
+| Elasticsearch      | 9200  |
+| Logstash           | 5044  |
+| Kibana             | 5601  |
+| Prometheus         | 9090  |
+| Grafana            | 3000  |
+| Jaeger             | 16686 |
 
 
 ## Links

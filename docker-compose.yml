@@ -8,8 +8,24 @@ services:
     environment:
       - JAEGER_HOST=${JAEGER_HOST}
       - JAEGER_PORT=${JAEGER_PORT}
+      - DATABASE_URL_FLYWAY=${DATABASE_URL_FlYWAY}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${JAEGER_PORT}
     ports:
       - "8080:8080"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0.29
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=dev
 
   sonarqube:
     image: sonarqube:community
@@ -137,3 +153,4 @@ volumes:
   sonarqube_logs:
   postgresql:
   postgresql_data:
+  mysql:
