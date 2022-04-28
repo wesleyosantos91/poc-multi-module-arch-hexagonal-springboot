@@ -23,9 +23,21 @@
     <dependencies>
 
         <dependency>
-            <groupId>io.github.wesleyosantos91</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>application</artifactId>
-            <version>1.0.0</version>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>datastore-mysql</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
