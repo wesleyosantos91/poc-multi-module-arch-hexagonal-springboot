@@ -42,7 +42,7 @@ class PersonMySQLAdapterTest {
     @DisplayName("[datastore-mysql] - should return a list with positive quantity")
     void find() {
         List<PersonDomain> result = adapter.find();
-        assertThat(result.size()).isPositive();
+        assertThat(result).isNotEmpty();
     }
 
     @Test
