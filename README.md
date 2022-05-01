@@ -170,7 +170,7 @@
 - Realize o Login com user: admin password: admin, gerar para uma nova
 - Na Página Princial, clique em `dashboard -> browse` depois clique em `JVM (Micrometer)` ele vai abrir um dashboard
 - Criar dashboard de monitoramento custom: 
-  - Na Página Princial, clique em `dashboard -> browse` depois clique em `ms-launcher-api` ele vai abrir um dashboard
+  - Na Página Princial, clique em `dashboard -> browse` depois clique em ` metrics-ms-launcher-api` ele vai abrir um dashboard
 
 ### Alertmanager
 - Na Página Principal, clicando na aba `alerts` conseguimos ver os acionados e que o alertmanager vai enviar a comunicação via feramenta configurada
