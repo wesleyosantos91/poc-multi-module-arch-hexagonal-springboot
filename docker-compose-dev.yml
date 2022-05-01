@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  ms-launcher:
+    container_name: ms-launcher
+    restart: always
+    build:
+      context: ./ms-launcher/
+    environment:
+      - JAEGER_HOST=${JAEGER_HOST}
+      - JAEGER_PORT=${JAEGER_PORT}
+      - FLYWAY_DATABASE_HOST=${FLYWAY_DATABASE_HOST}
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+  mysqldb:
+    image: mysql:8.0.29
+    container_name: mysqldb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=dev
+
+
+volumes:
+  mysql:

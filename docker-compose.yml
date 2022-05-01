@@ -8,17 +8,18 @@ services:
     environment:
       - JAEGER_HOST=${JAEGER_HOST}
       - JAEGER_PORT=${JAEGER_PORT}
-      - DATABASE_URL_FLYWAY=${DATABASE_URL_FlYWAY}
+      - FLYWAY_DATABASE_HOST=${FLYWAY_DATABASE_HOST}
+      - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_USERNAME=${DATABASE_USERNAME}
-      - DATABASE_PASSWORD=${JAEGER_PORT}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
     ports:
       - "8080:8080"
     depends_on:
       - mysql
 
-  mysql:
+  mysqldb:
     image: mysql:8.0.29
-    container_name: mysql
+    container_name: mysqldb
     ports:
       - "3306:3306"
     volumes:
