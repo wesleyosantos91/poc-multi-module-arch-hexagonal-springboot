@@ -1,0 +1,43 @@
+global:
+  slack_api_url: 'https://hooks.slack.com/services/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'
+
+templates:
+  - '/etc/alertmanager/template/*.tmpl'
+
+route:
+  group_by: [ 'alertname' ]
+  receiver: 'slack'
+  group_wait: 15s
+  group_interval: 15s
+  repeat_interval: 1m
+
+receivers:
+  - name: 'slack'
+    slack_configs:
+      - channel: '#alertas'
+        send_resolved: true
+        icon_url: https://avatars3.githubusercontent.com/u/3380462
+        title: |-
+          [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.app }}
+          {{- if gt (len .CommonLabels) (len .GroupLabels) -}}
+            {{" "}}(
+            {{- with .CommonLabels.Remove .GroupLabels.Names }}
+              {{- range $index, $label := .SortedPairs -}}
+                {{ if $index }}, {{ end }}
+                {{- $label.Name }}="{{ $label.Value -}}"
+              {{- end }}
+            {{- end -}}
+            )
+          {{- end }}
+        text: >-
+          {{ range .Alerts -}}
+          *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
+          
+          *Summary:* {{ .Annotations.summary }}
+          
+          *Description:* {{ .Annotations.description }}
+          
+          *Details:*
+            {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
+            {{ end }}
+          {{ end }}

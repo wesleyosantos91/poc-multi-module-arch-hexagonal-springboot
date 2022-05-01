@@ -1,0 +1,17 @@
+groups:
+  - name: Alerts
+    rules:
+      - alert: InstanceDown
+        expr: up{job="ms-launcher"} < 1
+        for: 1m
+        labels:
+          severity: medium
+        annotations:
+          summary: 'Alert with low severity.'
+      - alert: InstanceDownCritical
+        expr: up{job="ms-launcher"} < 1
+        for: 1m
+        labels:
+          severity: high
+        annotations:
+          summary: 'Alert with high severity.'

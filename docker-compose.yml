@@ -20,6 +20,7 @@ services:
   mysqldb:
     image: mysql:8.0.29
     container_name: mysqldb
+    restart: unless-stopped
     ports:
       - "3306:3306"
     volumes:
@@ -31,6 +32,7 @@ services:
   sonarqube:
     image: sonarqube:community
     container_name: sonarqube
+    restart: unless-stopped
     depends_on:
       - db
     environment:
@@ -49,6 +51,7 @@ services:
   db:
     image: postgres:12
     container_name: postgres_sonarqube
+    restart: unless-stopped
     environment:
       POSTGRES_USER: sonar
       POSTGRES_PASSWORD: sonar
@@ -127,6 +130,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/prometheus/alert.yml:/etc/prometheus/alert.yml
     ports:
       - "9090:9090"
     healthcheck:
@@ -148,6 +152,19 @@ services:
       - jaeger
     healthcheck:
       test: [ "CMD", "nc", "-z", "localhost", "3000" ]
+
+  alertmanager:
+    image: prom/alertmanager:v0.24.0
+    container_name: alertmanager
+    volumes:
+      - ./config/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - ./config/alertmanager/email.tmpl:/etc/alertmanager/template/email.tmpl
+    ports:
+      - "9093:9093"
+    command:
+      - --config.file=/etc/alertmanager/alertmanager.yml
+    depends_on:
+      - prometheus
 volumes:
   sonarqube_data:
   sonarqube_extensions:

@@ -62,6 +62,7 @@
 - **Filebeat** Log shipper
 - **Prometheus** Monitoramento e alertas
 - **Grafana** Análise e Monitoramento
+- **Alertmanager** Envio de alertas
 - **Jaeger** Tracing Distribuído
 
 ## Portas
@@ -76,6 +77,7 @@
 | Kibana             | 5601  |
 | Prometheus         | 9090  |
 | Grafana            | 3000  |
+| Alertmanager       | 9093  |
 | Jaeger             | 16686 |
 
 
@@ -89,6 +91,8 @@
   - http://localhost:9090
 - Grafana
   - http://localhost:3000
+- Alertmanager
+  - http://localhost:9093
 - Jaeger
   - http://localhost:16686
 - OpenAPI 
@@ -165,7 +169,11 @@
 ### Grafana
 - Realize o Login com user: admin password: admin, gerar para uma nova
 - Na Página Princial, clique em `dashboard -> browse` depois clique em `JVM (Micrometer)` ele vai abrir um dashboard
-- `TODO` Criar dashboard de monitoramento das apis
+- Criar dashboard de monitoramento custom: 
+  - Na Página Princial, clique em `dashboard -> browse` depois clique em `ms-launcher-api` ele vai abrir um dashboard
+
+### Alertmanager
+- Na Página Principal, clicando na aba `alerts` conseguimos ver os acionados e que o alertmanager vai enviar a comunicação via feramenta configurada
 
 ## Deletar todos containers Docker
 

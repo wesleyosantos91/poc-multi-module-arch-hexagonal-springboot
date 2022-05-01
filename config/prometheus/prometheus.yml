@@ -2,11 +2,20 @@ global:
   scrape_interval: 5s
   evaluation_interval: 5s
 
+rule_files:
+  - alert.yml
+
+alerting:
+  alertmanagers:
+    - scheme: http
+      static_configs:
+        - targets: [ 'alertmanager:9093' ]
+
 scrape_configs:
 
   - job_name: 'ms-launcher'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['host.docker.internal:8080']
+      - targets: [ 'host.docker.internal:8080' ]
         labels:
           application: ms-launcher
