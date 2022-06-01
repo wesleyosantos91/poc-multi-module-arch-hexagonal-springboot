@@ -30,7 +30,7 @@
         <java.version>11</java.version>
 
         <spring-cloud.version>2021.0.3</spring-cloud.version>
-        <logstash-logback-encoder.version>7.1.1</logstash-logback-encoder.version>
+        <logstash-logback-encoder.version>7.2</logstash-logback-encoder.version>
 
         <sonar.organization>wesleyosantos91-github</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
