@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface PersonServicePort {
 
     List<PersonDomain> find();
-    Optional<PersonDomain> findById(Long id);
+    PersonDomain findById(Long id);
     PersonDomain exist(Long id);
     PersonDomain create(PersonDomain personDomain);
     PersonDomain update(Long id, PersonDomain personDomain);

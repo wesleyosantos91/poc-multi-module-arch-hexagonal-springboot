@@ -1,6 +1,9 @@
 package io.github.wesleyosantos91.core.service;
 
+import static java.text.MessageFormat.format;
+
 import io.github.wesleyosantos91.core.domain.PersonDomain;
+import io.github.wesleyosantos91.core.exception.ResourceNotFoundException;
 import io.github.wesleyosantos91.ports.api.PersonServicePort;
 import io.github.wesleyosantos91.ports.spi.PersonDatabasePort;
 import java.util.List;
@@ -20,8 +23,9 @@ public class PersonServicePortImpl implements PersonServicePort {
     }
 
     @Override
-    public Optional<PersonDomain> findById(Long id) {
-        return personDatabasePort.findById(id);
+    public PersonDomain findById(Long id) {
+        return personDatabasePort.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(format("Not found regitstry with code {0}", id)));
     }
 
     @Override

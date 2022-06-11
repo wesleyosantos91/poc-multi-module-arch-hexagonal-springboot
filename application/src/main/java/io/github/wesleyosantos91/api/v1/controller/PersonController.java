@@ -43,8 +43,7 @@ public class PersonController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<PersonResponse> getById(@PathVariable Long id) {
         log.info("Function started 'getById person'");
-        var person = personServicePort.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(format("Not found regitstry with code {0}", id)));
+        var person = personServicePort.findById(id);
         log.info("finished function with sucess 'getById person'");
         return ResponseEntity.ok().body(INSTANCE.toResponse(person));
     }

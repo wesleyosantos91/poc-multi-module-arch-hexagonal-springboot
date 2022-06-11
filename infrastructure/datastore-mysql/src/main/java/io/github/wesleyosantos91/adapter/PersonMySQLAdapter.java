@@ -61,7 +61,7 @@ public class PersonMySQLAdapter implements PersonDatabasePort {
     @Transactional
     @Override
     public void delete(Long id) {
-        var personSaved = exist(id);
-        repository.delete(INSTANCE.toEntity(personSaved));
+        var personOptional = repository.findById(id);
+        personOptional.ifPresent(repository::delete);
     }
 }

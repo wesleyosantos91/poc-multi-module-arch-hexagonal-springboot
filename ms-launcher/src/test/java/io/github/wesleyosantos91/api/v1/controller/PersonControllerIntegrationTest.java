@@ -47,7 +47,7 @@ class PersonControllerIntegrationTest {
 
     @Test
     @DisplayName("[integration] - should created one person and return id 2")
-    void create() {
+    void should_created_one_person_and_return_id_2() {
         PersonRequest personRequest = Fixture.from(PersonRequest.class).gimme("create");
         ResponseEntity<PersonResponse> response =
                 restTemplate.postForEntity("http://localhost:" + port + "/v1/persons", personRequest, PersonResponse.class);
@@ -59,7 +59,7 @@ class PersonControllerIntegrationTest {
 
     @Test
     @DisplayName("[integration] - should return a person with id equals 1")
-    void getById() {
+    void should_return_a_person_with_id_equals_1() {
         ResponseEntity<PersonResponse> response = restTemplate.getForEntity("http://localhost:" + port + "/v1/persons/{id}", PersonResponse.class, 1);
         PersonResponse personResponse = response.getBody();
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -68,7 +68,7 @@ class PersonControllerIntegrationTest {
 
     @Test
     @DisplayName("[integration] - should return a list is not empty")
-    void find() {
+    void should_return_a_list_is_not_empty() {
         ResponseEntity<PersonResponse[]> response = restTemplate.getForEntity("http://localhost:" + port + "/v1/persons", PersonResponse[].class);
         List<PersonResponse> personResponses = List.of(Objects.requireNonNull(response.getBody()));
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -77,7 +77,7 @@ class PersonControllerIntegrationTest {
 
     @Test
     @DisplayName("[integration] - should update one person and return email change 'wesleyosantos91@gmail.com' ")
-    void update() {
+    void should_update_one_person_and_return_email_changed() {
         PersonRequest personRequest = Fixture.from(PersonRequest.class).gimme("update");
         ResponseEntity<PersonResponse> response = restTemplate.exchange("http://localhost:" + port + "/v1/persons/1", HttpMethod.PUT, new HttpEntity<>(personRequest), PersonResponse.class);
         PersonResponse personResponse = response.getBody();
@@ -87,7 +87,7 @@ class PersonControllerIntegrationTest {
 
     @Test
     @DisplayName("[integration] - should delete one person with id 1")
-    void delete() {
+    void should_delete_one_person_with_id_1() {
         ResponseEntity<Void> response = restTemplate.exchange("http://localhost:" + port + "/v1/persons/1", HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
         assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
 
