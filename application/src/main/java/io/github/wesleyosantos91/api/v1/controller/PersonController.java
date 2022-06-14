@@ -1,11 +1,9 @@
 package io.github.wesleyosantos91.api.v1.controller;
 
 import static io.github.wesleyosantos91.api.v1.mapper.PersonHttpMapper.INSTANCE;
-import static java.text.MessageFormat.format;
 
 import io.github.wesleyosantos91.api.v1.request.PersonRequest;
 import io.github.wesleyosantos91.api.v1.response.PersonResponse;
-import io.github.wesleyosantos91.core.exception.ResourceNotFoundException;
 import io.github.wesleyosantos91.ports.api.PersonServicePort;
 import java.util.List;
 import javax.validation.Valid;

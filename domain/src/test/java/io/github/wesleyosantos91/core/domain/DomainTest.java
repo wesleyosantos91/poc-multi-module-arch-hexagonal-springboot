@@ -1,6 +1,5 @@
 package io.github.wesleyosantos91.core.domain;
 
-import br.com.six2six.fixturefactory.Fixture;
 import io.github.wesleyosantos91.utils.GetterAndSetterTester;
 import java.io.Serializable;
 import java.util.Set;

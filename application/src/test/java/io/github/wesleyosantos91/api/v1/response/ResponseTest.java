@@ -1,7 +1,5 @@
 package io.github.wesleyosantos91.api.v1.response;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import io.github.wesleyosantos91.utils.GetterAndSetterTester;
 import java.io.Serializable;
 import java.util.Set;

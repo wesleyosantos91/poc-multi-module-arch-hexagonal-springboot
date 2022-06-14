@@ -151,6 +151,14 @@
   ```
   /bin/bash sonar.sh
   ```
+  
+### Pitests
+
+- Execute o comando na raiz do projeto
+  ``` 
+   mvn clean test-compile org.pitest:pitest-maven:mutationCoverage 
+  ```
+- Dentro da pasta target vai ser gerada um pasta pit-report onde se contra o HTML com o relatorio dos testes mutantes.
 
 ### Kibana
 
@@ -187,7 +195,12 @@
 
 - [x] Qualidade de código
   - [x] Sonarqube
+  - [x] Teste Mutantes (Pitest)
 - [x] Observabilidade
   - [x] Logs ELK (Elasticsearch, Logstash, Kibana) e Filebeat
   - [x] Prometheus e Grafana
   - [x] Jaeger distributed tracing
+- [ ] Kafka
+  - [ ] Producer
+  - [ ] Consumer
+    - [ ] Retries e Dead Letter Queues

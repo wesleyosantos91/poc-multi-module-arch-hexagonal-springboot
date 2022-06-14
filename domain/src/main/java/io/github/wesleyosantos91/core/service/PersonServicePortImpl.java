@@ -7,7 +7,6 @@ import io.github.wesleyosantos91.core.exception.ResourceNotFoundException;
 import io.github.wesleyosantos91.ports.api.PersonServicePort;
 import io.github.wesleyosantos91.ports.spi.PersonDatabasePort;
 import java.util.List;
-import java.util.Optional;
 
 public class PersonServicePortImpl implements PersonServicePort {
 

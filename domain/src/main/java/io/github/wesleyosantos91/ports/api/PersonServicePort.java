@@ -2,7 +2,6 @@ package io.github.wesleyosantos91.ports.api;
 
 import io.github.wesleyosantos91.core.domain.PersonDomain;
 import java.util.List;
-import java.util.Optional;
 
 public interface PersonServicePort {
 
