@@ -1,7 +1,6 @@
 package io.github.wesleyosantos91.ports.api;
 
 import io.github.wesleyosantos91.core.domain.PersonDomain;
-import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
