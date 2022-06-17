@@ -7,6 +7,8 @@ import io.github.wesleyosantos91.core.exception.ResourceNotFoundException;
 import io.github.wesleyosantos91.ports.api.PersonServicePort;
 import io.github.wesleyosantos91.ports.spi.PersonDatabasePort;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public class PersonServicePortImpl implements PersonServicePort {
 
@@ -17,8 +19,8 @@ public class PersonServicePortImpl implements PersonServicePort {
     }
 
     @Override
-    public List<PersonDomain> find() {
-        return personDatabasePort.find();
+    public Page<PersonDomain> find(PersonDomain personDomain, Pageable pageable) {
+        return personDatabasePort.find(personDomain, pageable);
     }
 
     @Override

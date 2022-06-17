@@ -4,13 +4,16 @@ import static io.github.wesleyosantos91.mapper.PersonMapper.INSTANCE;
 
 import io.github.wesleyosantos91.core.domain.PersonDomain;
 import io.github.wesleyosantos91.core.exception.ResourceNotFoundException;
+import io.github.wesleyosantos91.entity.PersonEntity;
 import io.github.wesleyosantos91.ports.spi.PersonDatabasePort;
 import io.github.wesleyosantos91.repository.PersonRepository;
 import java.text.MessageFormat;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,8 +29,10 @@ public class PersonMySQLAdapter implements PersonDatabasePort {
 
     @Transactional(readOnly = true)
     @Override
-    public List<PersonDomain> find() {
-        return INSTANCE.toListDomain(repository.findAll());
+    public Page<PersonDomain> find(PersonDomain personDomain, Pageable pageable) {
+        Example<PersonEntity> personEntityExample = Example.of(INSTANCE.toEntity(personDomain));
+        Page<PersonEntity> page = repository.findAll(personEntityExample, pageable);
+        return INSTANCE.toPageResponse(page);
     }
 
     @Transactional(readOnly = true)

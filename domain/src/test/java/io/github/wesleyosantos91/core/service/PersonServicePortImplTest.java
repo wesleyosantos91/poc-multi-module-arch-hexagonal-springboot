@@ -15,11 +15,15 @@ import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
@@ -37,12 +41,16 @@ class PersonServicePortImplTest {
     }
 
     @Test
-    @DisplayName("[domain] - should return a list is not empty")
+    @DisplayName("[domain] - should return a page is not empty")
     void should_return_a_list_is_not_empty() {
         List<PersonDomain> personDomains = Fixture.from(PersonDomain.class).gimme(1,"valid");
-        when(personDatabasePort.find()).thenReturn(personDomains);
-        List<PersonDomain> result = personServicePort.find();
-        assertThat(result).isNotEmpty();
+        PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme( "valid");
+        PageRequest pageRequest = PageRequest.of(1, 10);
+        when(personDatabasePort.find(personDomain, pageRequest)).thenReturn(new PageImpl<>(personDomains, pageRequest, personDomains.size()));
+        Page<PersonDomain> result = personServicePort.find(personDomain, pageRequest);
+
+        assertThat(result.getContent()).isNotEmpty();
+        assertThat(result.getTotalElements()).isPositive();
     }
 
     @Test

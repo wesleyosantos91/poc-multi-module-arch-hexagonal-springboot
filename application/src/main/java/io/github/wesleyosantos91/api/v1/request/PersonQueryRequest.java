@@ -11,8 +11,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonRequest implements Serializable {
+public class PersonQueryRequest implements Serializable {
 
+    private Long id;
     private String name;
     private LocalDate dateOfBirth;
     private String cpf;

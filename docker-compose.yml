@@ -15,7 +15,7 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - mysql
+      - mysqldb
 
   mysqldb:
     image: mysql:8.0.29
@@ -68,7 +68,7 @@ services:
       - "9300:9300"
     environment:
       discovery.type: single-node
-      xpack.security.enabled: false
+      xpack.security.enabled: 'false'
       ES_JAVA_OPTS: "-Xms512m -Xmx512m"
     healthcheck:
       test: "curl -f http://localhost:9200 || exit 1"

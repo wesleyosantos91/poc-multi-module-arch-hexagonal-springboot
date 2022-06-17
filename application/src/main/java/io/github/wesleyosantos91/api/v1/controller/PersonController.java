@@ -2,12 +2,15 @@ package io.github.wesleyosantos91.api.v1.controller;
 
 import static io.github.wesleyosantos91.api.v1.mapper.PersonHttpMapper.INSTANCE;
 
+import io.github.wesleyosantos91.api.v1.request.PersonQueryRequest;
 import io.github.wesleyosantos91.api.v1.request.PersonRequest;
 import io.github.wesleyosantos91.api.v1.response.PersonResponse;
+import io.github.wesleyosantos91.core.domain.PersonDomain;
 import io.github.wesleyosantos91.ports.api.PersonServicePort;
-import java.util.List;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -47,11 +50,12 @@ public class PersonController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonResponse>> find() {
+    public ResponseEntity<Page<PersonResponse>> find(PersonQueryRequest query, Pageable page) {
         log.info("Function started 'find person'");
-        var domains = personServicePort.find();
+        PersonDomain personDomain = INSTANCE.toDomain(query);
+        var domains = personServicePort.find(personDomain, page);
         log.info("finished function with sucess 'find person'");
-        return ResponseEntity.ok().body(INSTANCE.toListResponse(domains));
+        return ResponseEntity.ok().body(INSTANCE.toPageResponse(domains));
     }
 
     @PutMapping(value ="/{id}")

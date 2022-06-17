@@ -2,10 +2,12 @@ package io.github.wesleyosantos91.ports.api;
 
 import io.github.wesleyosantos91.core.domain.PersonDomain;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface PersonServicePort {
 
-    List<PersonDomain> find();
+    Page<PersonDomain> find(PersonDomain personDomain, Pageable pageable);
     PersonDomain findById(Long id);
     PersonDomain exist(Long id);
     PersonDomain create(PersonDomain personDomain);

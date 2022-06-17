@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
+import com.fasterxml.jackson.core.type.TypeReference;
 import io.github.wesleyosantos91.Application;
 import io.github.wesleyosantos91.api.v1.request.PersonRequest;
 import io.github.wesleyosantos91.api.v1.response.PersonResponse;
 import io.github.wesleyosantos91.configuration.AppBeansConfig;
+import io.github.wesleyosantos91.utils.PageableResponse;
 import java.util.List;
 import java.util.Objects;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -69,10 +74,10 @@ class PersonControllerIntegrationTest {
     @Test
     @DisplayName("[integration] - should return a list is not empty")
     void should_return_a_list_is_not_empty() {
-        ResponseEntity<PersonResponse[]> response = restTemplate.getForEntity("http://localhost:" + port + "/v1/persons", PersonResponse[].class);
-        List<PersonResponse> personResponses = List.of(Objects.requireNonNull(response.getBody()));
+        var response  = restTemplate.exchange("http://localhost:" + port + "/v1/persons",HttpMethod.GET, HttpEntity.EMPTY, PageableResponse.class);
+        PageableResponse<PersonResponse> personResponses = response.getBody();
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertFalse(personResponses.isEmpty());
+        assertFalse(personResponses.getContent().isEmpty());
     }
 
     @Test
