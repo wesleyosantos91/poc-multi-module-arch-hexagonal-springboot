@@ -18,7 +18,6 @@ class ResourceNotFoundExceptionTest {
             throw new ResourceNotFoundException(expectedMessage);
         });
 
-
         assertEquals(expectedMessage, exception.getMessage());
     }
 

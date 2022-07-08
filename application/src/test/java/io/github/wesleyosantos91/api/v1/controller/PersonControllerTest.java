@@ -55,7 +55,7 @@ class PersonControllerTest {
 
     @Test
     @DisplayName("[application] - should created one personDomain and return id 1")
-    void should_created_one_personDomain_and_return_id_1() throws Exception {
+    void shouldCreatedOnePersonDomainAndReturnId1() throws Exception {
 
 
         PersonRequest personRequest = Fixture.from(PersonRequest.class).gimme("create");
@@ -77,7 +77,7 @@ class PersonControllerTest {
 
     @Test
     @DisplayName("[application] - should return a personDomain with id equals 1")
-    void should_return_a_personDomain_with_id_equals_1() throws Exception {
+    void shouldReturnAPersonDomainWithIdEquals1() throws Exception {
 
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme("created");
         when(personServicePort.findById(any())).thenReturn(personDomain);
@@ -93,7 +93,7 @@ class PersonControllerTest {
 
     @Test
     @DisplayName("[application] - should return a list is not empty")
-    void should_return_a_list_is_not_empty() throws Exception {
+    void shouldReturnAListIsNotEmpty() throws Exception {
 
 
         List<PersonDomain> personDomains = Fixture.from(PersonDomain.class).gimme(1,"created");
@@ -113,7 +113,7 @@ class PersonControllerTest {
 
     @Test
     @DisplayName("[application] - should update one personDomain and return email change")
-    void should_update_one_personDomain_and_return_email_change() throws Exception {
+    void shouldUpdateOnePersonDomainAndReturnEmailChange() throws Exception {
 
         PersonRequest personRequest = Fixture.from(PersonRequest.class).gimme("create");
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme("created");
@@ -136,7 +136,7 @@ class PersonControllerTest {
 
     @Test
     @DisplayName("[application] - should delete one personDomain with id 1")
-    void should_delete_one_personDomain_with_id_1() throws Exception {
+    void shouldDeleteOnePersonDomainWithId1() throws Exception {
 
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme("created");
         when(personServicePort.findById(any())).thenReturn(personDomain);

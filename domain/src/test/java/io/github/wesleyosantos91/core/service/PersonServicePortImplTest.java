@@ -41,7 +41,7 @@ class PersonServicePortImplTest {
 
     @Test
     @DisplayName("[domain] - should return a page is not empty")
-    void should_return_a_list_is_not_empty() {
+    void shouldReturnAListIsNotEmpty() {
         List<PersonDomain> personDomains = Fixture.from(PersonDomain.class).gimme(1,"valid");
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme( "valid");
         PageRequest pageRequest = PageRequest.of(1, 10);
@@ -54,7 +54,7 @@ class PersonServicePortImplTest {
 
     @Test
     @DisplayName("[domain] - should return a personDomain with id equals 1")
-    void should_return_a_personDomain_with_id_equals_1() {
+    void shouldReturnAPersonDomainWithIdEquals1() {
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme("valid");
         when(personDatabasePort.findById(any())).thenReturn(Optional.of(personDomain));
 
@@ -64,7 +64,7 @@ class PersonServicePortImplTest {
 
     @Test
     @DisplayName("[domain] - should return a ResourceNotFoundException with message Not found regitstry with code 1")
-    void should_return_a_ResourceNotFoundException_with_message_Not_found_regitstry_with_code_1() {
+    void shouldReturnAResourceNotFoundExceptionWithMessageNotFoundRegitstryWithCode1() {
 
         when(personDatabasePort.findById(any())).thenReturn(Optional.empty());
 
@@ -77,7 +77,7 @@ class PersonServicePortImplTest {
 
     @Test
     @DisplayName("[domain] - should return a existing personDomain with id equals 1")
-    void should_return_a_existing_personDomain_with_id_equals_1() {
+    void shouldReturnAExistingPersonDomainWithIdEquals1() {
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme("valid");
         when(personDatabasePort.exist(any())).thenReturn(personDomain);
         PersonDomain result = personServicePort.exist(1L);
@@ -86,7 +86,7 @@ class PersonServicePortImplTest {
 
     @Test
     @DisplayName("[domain] - should created one personDomain and return id 1")
-    void should_created_one_personDomain_and_return_id_1() {
+    void shouldCreatedOnePersonDomainAndReturnId1() {
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme("valid");
         when(personDatabasePort.create(any())).thenReturn(personDomain);
         PersonDomain result = personServicePort.create(personDomain);
@@ -95,7 +95,7 @@ class PersonServicePortImplTest {
 
     @Test
     @DisplayName("[domain] - should update one personDomain and return email change")
-    void should_update_one_personDomain_and_return_email_change() {
+    void shouldUpdateOnePersonDomainAndReturnEmailChange() {
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme("valid_update");
         when(personDatabasePort.update(any(), any())).thenReturn(personDomain);
         PersonDomain result = personServicePort.update(1L, personDomain);
@@ -104,7 +104,7 @@ class PersonServicePortImplTest {
 
     @Test
     @DisplayName("[domain] - should delete one personDomain with id 1")
-    void should_delete_one_personDomain_with_id_1() {
+    void shouldDeleteOnePersonDomainWithId1() {
 
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme("valid");
         when(personDatabasePort.findById(any())).thenReturn(Optional.of(personDomain));

@@ -1,0 +1,27 @@
+{
+  "namespace": "io.github.wesleyosantos91.schema",
+  "type": "record",
+  "name": "Person",
+  "version":"1.0.0",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "dateOfBirth",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
+      }
+    },
+    {
+      "name": "cpf",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    }
+  ]
+}

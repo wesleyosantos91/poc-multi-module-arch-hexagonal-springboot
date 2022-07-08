@@ -40,7 +40,7 @@ class PersonMySQLAdapterTest {
 
     @Test
     @DisplayName("[datastore-mysql] - should return a page is not empty")
-    void find() {
+    void shouldReturnAPageIsNotEmpty() {
         PersonDomain personDomain = new PersonDomain();
         personDomain.setCpf("56844030932");
         Page<PersonDomain> result = adapter.find(personDomain, Pageable.unpaged());
@@ -50,7 +50,7 @@ class PersonMySQLAdapterTest {
 
     @Test
     @DisplayName("[datastore-mysql] - should return a personDomain with id equals 1")
-    void findById() {
+    void shouldReturnAPersonDomainWithIdEquals1() {
         Optional<PersonDomain> personDomainOptional = adapter.findById(1L);
         PersonDomain result = personDomainOptional.get();
         assertThat(result.getId()).isEqualTo(1L);
@@ -58,14 +58,14 @@ class PersonMySQLAdapterTest {
 
     @Test
     @DisplayName("[datastore-mysql] - should return a personDomain with id equals 1")
-    void should_return_a_personDomain_with_id_equals_1() {
+    void shouldReturnAPersonDomainWithIdEquals1UsingMethodExist() {
         PersonDomain result = adapter.exist(1L);
         assertThat(result).isNotNull();
     }
 
     @Test
     @DisplayName("[datastore-mysql] - should created one personDomain and return id 1")
-    void should_created_one_personDomain_and_return_id_1() {
+    void shouldCreatedOnePersonDomainAndReturnId1() {
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme("create");
         PersonDomain result = adapter.create(personDomain);
         assertThat(result.getId()).isEqualTo(2L);
@@ -73,7 +73,7 @@ class PersonMySQLAdapterTest {
 
     @Test
     @DisplayName("[datastore-mysql] - should update one personDomain and return email change")
-    void should_update_one_personDomain_and_return_email_change() {
+    void shouldUpdateOnePersonDomainAndReturnEmailChange() {
         PersonDomain personDomain = Fixture.from(PersonDomain.class).gimme("update");
         PersonDomain result = adapter.update(1L, personDomain);
         assertThat(result.getEmail()).isEqualTo("wesleyosantos91@gmail.com");
@@ -81,7 +81,7 @@ class PersonMySQLAdapterTest {
 
     @Test
     @DisplayName("[datastore-mysql] - should delete one personDomain with id 1")
-    void should_delete_one_personDomain_with_id_1() {
+    void shouldDeleteOnePersonDomainWithId1() {
         adapter.delete(1L);
         assertThrows(ResourceNotFoundException.class, () -> {
             adapter.exist(1L);

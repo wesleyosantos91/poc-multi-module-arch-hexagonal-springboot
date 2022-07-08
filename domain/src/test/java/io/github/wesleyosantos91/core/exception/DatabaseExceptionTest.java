@@ -18,7 +18,6 @@ class DatabaseExceptionTest {
             throw new DatabaseException(expectedMessage);
         });
 
-
         assertEquals(expectedMessage, exception.getMessage());
     }
 
