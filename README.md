@@ -196,11 +196,12 @@
 - [x] Qualidade de código
   - [x] Sonarqube
   - [x] Teste Mutantes (Pitest)
+  - [ ] Teste com docker (Testcontainers)
 - [x] Observabilidade
   - [x] Logs ELK (Elasticsearch, Logstash, Kibana) e Filebeat
   - [x] Prometheus e Grafana
   - [x] Jaeger distributed tracing
 - [ ] Kafka
-  - [ ] Producer
-  - [ ] Consumer
+  - [x] Producer
+  - [x] Consumer
     - [ ] Retries e Dead Letter Queues
