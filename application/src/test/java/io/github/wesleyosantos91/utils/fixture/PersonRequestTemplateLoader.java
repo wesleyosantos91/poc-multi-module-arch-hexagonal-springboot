@@ -4,6 +4,7 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import io.github.wesleyosantos91.api.v1.request.PersonRequest;
+
 import java.time.LocalDate;
 
 public class PersonRequestTemplateLoader implements TemplateLoader {

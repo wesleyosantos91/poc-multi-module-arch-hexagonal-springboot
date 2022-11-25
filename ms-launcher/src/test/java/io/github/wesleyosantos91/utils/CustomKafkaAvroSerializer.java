@@ -3,6 +3,7 @@ package io.github.wesleyosantos91.utils;
 import io.confluent.kafka.schemaregistry.client.MockSchemaRegistryClient;
 import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
+
 import java.util.Map;
 
 public class CustomKafkaAvroSerializer extends KafkaAvroSerializer {

@@ -1,13 +1,8 @@
 package io.github.wesleyosantos91.kafka;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 import io.github.wesleyosantos91.kafka.utils.CustomKafkaAvroDeserializer;
 import io.github.wesleyosantos91.schema.Person;
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -28,6 +23,12 @@ import org.springframework.kafka.test.utils.KafkaTestUtils;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @ActiveProfiles("test")

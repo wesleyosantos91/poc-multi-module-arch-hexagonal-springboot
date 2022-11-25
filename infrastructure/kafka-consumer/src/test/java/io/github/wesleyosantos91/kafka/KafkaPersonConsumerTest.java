@@ -1,12 +1,6 @@
 package io.github.wesleyosantos91.kafka;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import io.github.wesleyosantos91.schema.Person;
-import java.time.LocalDate;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,6 +16,13 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.time.LocalDate;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
@@ -63,7 +64,7 @@ class KafkaPersonConsumerTest {
                 .setHeader("type", "fct")
                 .setHeader("cid", messagekey)
                 .setHeader(KafkaHeaders.TOPIC, this.TOPIC)
-                .setHeader(KafkaHeaders.MESSAGE_KEY, messagekey)
+                .setHeader(KafkaHeaders.KEY, messagekey)
                 .build();
 
         kafkaTemplate.send(message);

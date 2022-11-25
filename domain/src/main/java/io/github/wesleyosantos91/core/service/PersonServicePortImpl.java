@@ -1,13 +1,13 @@
 package io.github.wesleyosantos91.core.service;
 
-import static java.text.MessageFormat.format;
-
 import io.github.wesleyosantos91.core.domain.PersonDomain;
 import io.github.wesleyosantos91.core.exception.ResourceNotFoundException;
 import io.github.wesleyosantos91.ports.api.PersonServicePort;
 import io.github.wesleyosantos91.ports.spi.PersonDatabasePort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import static java.text.MessageFormat.format;
 
 public class PersonServicePortImpl implements PersonServicePort {
 

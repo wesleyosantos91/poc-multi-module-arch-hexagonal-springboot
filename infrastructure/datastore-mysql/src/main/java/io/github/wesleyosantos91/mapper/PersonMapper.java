@@ -2,12 +2,13 @@ package io.github.wesleyosantos91.mapper;
 
 import io.github.wesleyosantos91.core.domain.PersonDomain;
 import io.github.wesleyosantos91.entity.PersonEntity;
-import java.util.ArrayList;
-import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mapper
 public interface PersonMapper {

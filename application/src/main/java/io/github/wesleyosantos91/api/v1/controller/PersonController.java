@@ -1,13 +1,11 @@
 package io.github.wesleyosantos91.api.v1.controller;
 
-import static io.github.wesleyosantos91.api.v1.mapper.PersonHttpMapper.INSTANCE;
-
 import io.github.wesleyosantos91.api.v1.request.PersonQueryRequest;
 import io.github.wesleyosantos91.api.v1.request.PersonRequest;
 import io.github.wesleyosantos91.api.v1.response.PersonResponse;
 import io.github.wesleyosantos91.core.domain.PersonDomain;
 import io.github.wesleyosantos91.ports.api.PersonServicePort;
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +19,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static io.github.wesleyosantos91.api.v1.mapper.PersonHttpMapper.INSTANCE;
 
 @Slf4j
 @RestController

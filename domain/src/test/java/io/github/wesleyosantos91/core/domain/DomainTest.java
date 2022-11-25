@@ -1,12 +1,13 @@
 package io.github.wesleyosantos91.core.domain;
 
 import io.github.wesleyosantos91.utils.GetterAndSetterTester;
-import java.io.Serializable;
-import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.reflections.Reflections;
+
+import java.io.Serializable;
+import java.util.Set;
 
 class DomainTest {
 

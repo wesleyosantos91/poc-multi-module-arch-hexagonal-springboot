@@ -1,14 +1,10 @@
 package io.github.wesleyosantos91.adapter;
 
-import static io.github.wesleyosantos91.mapper.PersonMapper.INSTANCE;
-
 import io.github.wesleyosantos91.core.domain.PersonDomain;
 import io.github.wesleyosantos91.core.exception.ResourceNotFoundException;
 import io.github.wesleyosantos91.entity.PersonEntity;
 import io.github.wesleyosantos91.ports.spi.PersonDatabasePort;
 import io.github.wesleyosantos91.repository.PersonRepository;
-import java.text.MessageFormat;
-import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Example;
@@ -16,6 +12,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.text.MessageFormat;
+import java.util.Optional;
+
+import static io.github.wesleyosantos91.mapper.PersonMapper.INSTANCE;
 
 @Component
 @Primary

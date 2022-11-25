@@ -1,11 +1,12 @@
 package io.github.wesleyosantos91.core.domain;
 
-import java.io.Serializable;
-import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.io.Serializable;
+import java.time.LocalDate;
 
 @Getter
 @Setter
