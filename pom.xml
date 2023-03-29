@@ -29,7 +29,7 @@
     <properties>
         <java.version>17</java.version>
 
-        <spring-cloud.version>2022.0.1</spring-cloud.version>
+        <spring-cloud.version>2022.0.2</spring-cloud.version>
         <logstash-logback-encoder.version>7.3</logstash-logback-encoder.version>
 
         <sonar.organization>wesleyosantos91-github</sonar.organization>
