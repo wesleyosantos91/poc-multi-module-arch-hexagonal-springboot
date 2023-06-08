@@ -64,9 +64,8 @@
                         </goals>
                         <configuration>
                             <stringType>String</stringType>
-                            <dateTimeLogicalTypeImplementation>JSR310</dateTimeLogicalTypeImplementation>
                             <sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
-                            <outputDirectory>${project.basedir}/target/classes/</outputDirectory>
+                            <outputDirectory>${project.build.directory}/generated-sources/avro/</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
