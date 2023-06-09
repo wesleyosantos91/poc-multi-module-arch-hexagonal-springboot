@@ -7,6 +7,7 @@ import io.github.wesleyosantos91.api.v1.request.PersonRequest;
 import io.github.wesleyosantos91.api.v1.response.PersonResponse;
 import io.github.wesleyosantos91.configuration.AppBeansConfig;
 import io.github.wesleyosantos91.utils.PageableResponse;
+import io.github.wesleyosantos91.utils.config.MySQLContainerBaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 @DirtiesContext
 @EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
 @ExtendWith(SpringExtension.class)
-class PersonControllerIntegrationTest {
+class PersonControllerIntegrationTest extends MySQLContainerBaseTest {
 
     @LocalServerPort
     Integer port;
