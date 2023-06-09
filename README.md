@@ -80,7 +80,6 @@
 | Alertmanager       | 9093  |
 | Jaeger             | 16686 |
 
-
 ## Links
 
 - Sonar Cloud
